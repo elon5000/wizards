@@ -59,13 +59,13 @@ function onSetSpell(ev, spellId) {
     ev.stopPropagation()
     if (!gGame.isGameOn) return
     const spell = spellService.getSpellById(spellId)
+    const currWizard = wizardService.getWizards()[gGame.currentTurn]
+    if (spell.mpCost < 0 && currWizard.mp < -spell.mpCost) return _renderMessageModal('Not enough mana')
     _setSelectedSpell(spell)
     _toggleHidden([gElSpellModal])
     if (spell.name === 'Rest') {
         onTarget(null)
     }
-    const currWizard = wizardService.getWizards()[gGame.currentTurn]
-    if (spell.mpCost < 0 && currWizard.mp < -spell.mpCost) return alert('Not enoght mana')
 }
 
 function onTarget(targetId) {

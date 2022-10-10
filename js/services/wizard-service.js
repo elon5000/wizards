@@ -32,11 +32,13 @@ function updateWizards(casterIdx, targetId, spell) {
     wizards[casterIdx].hp += spell.hpCost
     wizards[casterIdx].mp += spell.mpCost
     if (wizards[casterIdx].hp <= 0) wizards.splice(casterIdx, 1)
+    else if (wizards[casterIdx].mp < 0) wizards[casterIdx].mp = 0
     if (targetId) {
         const targetIdx = wizards.findIndex(wizard => wizard._id === targetId)
         wizards[targetIdx].hp += spell.hpDiff
+        if (wizards[targetIdx].hp <= 0) return wizards.splice(targetIdx, 1)
         wizards[targetIdx].mp += spell.mpDiff
-        if (wizards[targetIdx].hp <= 0) wizards.splice(targetIdx, 1)
+        if (wizards[targetIdx].mp < 0) wizards[targetIdx].mp = 0
     }
 }
 
