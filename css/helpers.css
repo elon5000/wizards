@@ -1,0 +1,30 @@
+.grid {
+    display: grid;
+}
+
+.flex {
+    display: flex;
+}
+
+.hidden {
+    display: none;
+}
+
+.logo {
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 500;
+    font-family: fantasy;
+    color: var(--main-yellow);
+    text-shadow: 2px 2px 10px rgba(240, 237, 219, 0.416);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    text-shadow: 4px 4px 30px rgb(248, 245, 226);
+}
+
+.close-modal-btn {
+    border: none;
+    background: none;
+}

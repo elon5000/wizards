@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Wizards</title>
+</head>
+
+<body>
+    <main class="flex">
+        <header class="flex">
+            <h1 class="logo header-logo" title="Wizards logo" onclick="onReset()">
+                Wizards&nbsp
+                <i class="fa-solid fa-hand-sparkles"></i>
+            </h1>
+            <button class="hidden battle-log-btn" onclick="onToggleLog()" title="toggle battle log">
+                <i class="fa-solid fa-scroll"></i>
+            </button>
+        </header>
+        <div class="flex setting-container">
+            <form class="flex" onsubmit="onStart(event)">
+                <div class="flex input-container">
+                    <label for="players" title="Number of players">
+                        Players&nbsp
+                        <i class="fa-regular fa-user"></i>
+                    </label>
+                    <select name="players" class="num-of-players">
+                        <option value="2" title="2 players">2</option>
+                        <option value="3" title="3 players">3</option>
+                        <option value="4" title="4 players">4</option>
+                        <option value="5" title="5 players">5</option>
+                        <option value="6" title="6 players">6</option>
+                        <option value="7" title="7 players">7</option>
+                        <option value="8" title="8 players">8</option>
+                    </select>
+                </div>
+                <button class="start-btn" title="Start game">Play</button>
+            </form>
+        </div>
+        <div class="flex hidden message-modal" title="message-modal"></div>
+        <section class="hidden flex game">
+            <div class="grid game-board">
+            </div>
+            <div class="grid spell-modal"></div>
+            <section class="flex hidden batlle-log">
+                <div class="flex battle-log-container"></div>
+                <button class="close-modal-btn" title="close battle log" onclick="onToggleLog()">
+                    <i class="fa-solid fa-x"></i>
+                </button>
+            </section>
+        </section>
+        <footer class="flex">
+            <h1 class="copyright" title="copyrights">©Wizards 2022</h1>
+        </footer>
+    </main>
+    <script type="module" src="js/services/util-service.js"></script>
+    <script type="module" src="js/services/spell-service.js"></script>
+    <script type="module" src="js/services/wizard-service.js"></script>
+    <script type="module" src="js/services/log-service.js"></script>
+    <script type="module" src="js/controllers/wizards-controller.js"></script>
+    <script type="module" src="js/controllers/game-controller.js"></script>
+</body>
+
+</html>

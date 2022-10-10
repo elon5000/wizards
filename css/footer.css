@@ -1,0 +1,14 @@
+footer {
+    width: 100%;
+    padding: 2%;
+    height: fit-content;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.copyright {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--main-yellow);
+}

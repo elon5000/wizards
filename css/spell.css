@@ -1,0 +1,45 @@
+.spell-list {
+    left: 70%;
+    bottom: 50%;
+    z-index: 20;
+    list-style: none;
+    position: absolute;
+    flex-direction: column;
+}
+
+.spell-modal {
+    gap: 8px;
+    left: 50%;
+    bottom: 0;
+    width: 100vw;
+    height: 30vh;
+    padding: 8px;
+    position: fixed;
+    animation: slide-up 0.4s;
+    transform: translate(-50%, 0%);
+    background: rgba(0, 0, 0, 0.816);
+    grid-auto-rows: repeat(2, minmax(30px, 1fr));
+    grid-template-columns: repeat(3, minmax(30px, 1fr));
+}
+
+.listed-spell {
+    font-weight: 500;
+    text-align: center;
+    border-radius: 8px;
+    align-content: center;
+    color: var(--main-red);
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(194, 187, 123);
+}
+
+.listed-spell:hover {
+    cursor: pointer;
+    background: rgb(237, 233, 194);
+}
+
+.listed-spell:active {
+    transition: 0.1s;
+    transform: scale(0.90);
+}

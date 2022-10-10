@@ -1,0 +1,40 @@
+.wizard {
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stats-contianer {
+    padding: 2px;
+    flex-direction: column;
+}
+
+.wizard-hat {
+    font-size: 1.6rem;
+}
+
+.stats-contianer > h4 {
+    font-weight: 400;
+}
+
+.wizard-hp {
+    color: rgb(139, 4, 4);
+}
+
+.wizard-mp {
+    color: rgb(13, 4, 139);
+}
+
+.player {
+    border: 6px solid whitesmoke;
+}
+
+.target {
+    cursor: crosshair;
+}
+
+.target:hover {
+    transform: scale(0.98);
+}

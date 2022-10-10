@@ -1,0 +1,53 @@
+.batlle-log {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    position: fixed;
+    overflow: hidden;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
+    padding: 40px 0px 40px 0px;
+    animation: slide-down 0.4s;
+    background: rgba(0, 0, 0, 0.845);
+}
+
+.batlle-log>.close-modal-btn {
+    right: 4%;
+    bottom: 2%;
+    cursor: pointer;
+    font-size: 2.4rem;
+    position: absolute;
+    color: var(--main-yellow);
+    text-shadow: 4px 4px 6px rgb(21, 21, 21);
+}
+
+.batlle-log>.close-modal-btn:active {
+    transform: scale(0.95);
+    color: rgb(160, 160, 160);
+}
+
+.battle-log-container {
+    width: 88vw;
+    height: 100%;
+    display: block;
+    overflow-y: scroll;
+}
+
+.battle-log-container::-webkit-scrollbar {
+    width: 0;
+}
+
+.battle-log-line {
+    width: 100%;
+}
+
+.log-text {
+    width: 100%;
+    padding: 8px 0px 8px 0px;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: whitesmoke;
+}

@@ -1,0 +1,7 @@
+.game-board {
+    gap: 10%;
+    width: 100%;
+    height: 90%;
+    grid-auto-rows: repeat(2, minmax(30px, 1fr));
+    grid-template-columns: repeat(2, minmax(30px, 1fr));
+}
