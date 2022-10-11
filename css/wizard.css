@@ -3,16 +3,19 @@
     position: relative;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .stats-contianer {
-    padding: 2px;
-    flex-direction: column;
+    gap: 2%;
+    width: 98%;
+    justify-items: center;
+    grid-auto-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .wizard-hat {
-    font-size: 1.6rem;
+    font-size: 2rem;
 }
 
 .stats-contianer > h4 {
@@ -25,6 +28,10 @@
 
 .wizard-mp {
     color: rgb(13, 4, 139);
+}
+
+.wizard-gold {
+    color: goldenrod;
 }
 
 .wizard-level {

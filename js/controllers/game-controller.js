@@ -107,9 +107,10 @@ function _renderWizards() {
         onclick="onTarget('${wizard._id}')"
         style="background: ${wizard.color}">
         <i class="fa-solid fa-hat-wizard wizard-hat"></i>
-        <div class="flex stats-contianer">
+        <div class="grid stats-contianer">
         <h4 class="wizard-hp" title="Health points: ${wizard.hp}"> <i class="fa-solid fa-heart"></i>&nbsp: ${wizard.hp} </h4>
         <h4 class="wizard-mp" title="Mana points: ${wizard.mp}"> <i class="fa-solid fa-wand-magic"></i>&nbsp: ${wizard.mp} </h4>
+        <h4 class="wizard-gold" title="Gold: ${wizard.gold}"> <i class="fa-solid fa-hand-holding-dollar"></i>&nbsp: ${wizard.gold} </h4>
         <h4 class="wizard-level" title="Level: ${wizard.level}"> Level: ${wizard.level} </h4>
         </div>
         </div>
@@ -143,7 +144,8 @@ function _renderMessageModal(message) {
 function _renderShop() {
     const elShopContainer = document.querySelector('.shop-container')
     const currWizard = wizardService.getWizards()[gGame.currentTurn]
-    const spells = spellService.getSpells()
+    const spells = spellService.getSpells().slice()
+    spells.splice(0, 2)
     let strHTMLs = spells.map(spell => {
         return `<div class="flex spell-item-container ${(currWizard.spells.includes(spell)) ? 'purchsed' : ''}">
         <div class="spell-cost-container">${spell.cost}</div>
