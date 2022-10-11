@@ -95,13 +95,13 @@ function _renderWizards() {
     let strHTMLs = wizards.map((wizard, idx) => {
         return `
         <div class="${(gGame.currentTurn === idx) ? 'player' : 'target'} flex wizard wizard-${wizard._id}"
-        title="wizard-${wizard._id}"
+        title="Wizard-${wizard._id}"
         onclick="onTarget('${wizard._id}')"
         style="background: ${wizard.color}">
         <i class="fa-solid fa-hat-wizard wizard-hat"></i>
         <div class="flex stats-contianer">
-        <h4 class="wizard-hp" title="health points: ${wizard.hp}"> <i class="fa-solid fa-heart"></i>&nbsp: ${wizard.hp} </h4>
-        <h4 class="wizard-mp" title="mana points: ${wizard.mp}"> <i class="fa-solid fa-wand-magic"></i>&nbsp: ${wizard.mp} </h4>
+        <h4 class="wizard-hp" title="Health points: ${wizard.hp}"> <i class="fa-solid fa-heart"></i>&nbsp: ${wizard.hp} </h4>
+        <h4 class="wizard-mp" title="Mana points: ${wizard.mp}"> <i class="fa-solid fa-wand-magic"></i>&nbsp: ${wizard.mp} </h4>
         </div>
         </div>
         `
