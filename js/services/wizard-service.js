@@ -29,6 +29,8 @@ function setWizards(length = 2) {
 }
 
 function updateWizards(casterIdx, targetId, spell) {
+    spell.hpDiff = (spell.hpDiff * wizards[casterIdx].level)
+    spell.mpDiff = (spell.mpDiff * wizards[casterIdx].level)
     wizards[casterIdx].hp += spell.hpCost
     wizards[casterIdx].mp += spell.mpCost
     if (wizards[casterIdx].hp <= 0) wizards.splice(casterIdx, 1)
@@ -36,7 +38,11 @@ function updateWizards(casterIdx, targetId, spell) {
     if (targetId) {
         const targetIdx = wizards.findIndex(wizard => wizard._id === targetId)
         wizards[targetIdx].hp += spell.hpDiff
-        if (wizards[targetIdx].hp <= 0) return wizards.splice(targetIdx, 1)
+        if (wizards[targetIdx].hp <= 0) {
+            wizards[casterIdx].level += 1
+            wizards.splice(targetIdx, 1)
+            return
+        }
         wizards[targetIdx].mp += spell.mpDiff
         if (wizards[targetIdx].mp < 0) wizards[targetIdx].mp = 0
     }
@@ -48,6 +54,7 @@ function _makeWizard() {
         color: utilService.getRandomColor(),
         spells: spellService.getSpells(),
         hp: 100,
-        mp: 100
+        mp: 100,
+        level: 1
     }
 }

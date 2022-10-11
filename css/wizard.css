@@ -27,6 +27,10 @@
     color: rgb(13, 4, 139);
 }
 
+.wizard-level {
+    color: rgb(10, 10, 10);
+}
+
 .player {
     border: 6px solid whitesmoke;
 }
