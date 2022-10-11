@@ -179,8 +179,9 @@ function _setSelectedSpell(spell) {
 }
 
 function _setCurrTurn(turn) {
-    if (turn) gGame.currentTurn = turn
-    else if (gGame.currentTurn && gGame.currentTurn <= wizardService.getWizards().length - 1) {
+    if (turn) {
+        gGame.currentTurn = turn
+    } else if (gGame.currentTurn === 0 || gGame.currentTurn && gGame.currentTurn < wizardService.getWizards().length - 1) {
         gGame.currentTurn += 1
     } else {
         gGame.currentTurn = 0
