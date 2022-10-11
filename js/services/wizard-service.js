@@ -49,12 +49,20 @@ function updateWizards(casterIdx, targetId, spell) {
 }
 
 function _makeWizard() {
-    return {
+    const spells = spellService.getSpells().slice()
+    const wizard = {
         _id: utilService.makeId(),
         color: utilService.getRandomColor(),
-        spells: spellService.getSpells(),
+        spells: [],
         hp: 100,
         mp: 100,
         level: 1
     }
+    wizard.spells.push(spellService.getSpellById('s101'))
+    for (let i = 0; i < 2; i++) {
+        const spellIdx = utilService.getRandomInt(1, spells.length)
+        wizard.spells.push(spells[spellIdx])
+        spells.splice(spellIdx, 1)
+    }
+    return wizard
 }

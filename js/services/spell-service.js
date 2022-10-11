@@ -8,12 +8,12 @@ export const spellService = {
 const spells = [
     {
         _id: 's101',
-        name: 'Fireball',
-        hpDiff: -15,
+        name: 'Rest',
+        hpDiff: 0,
         mpDiff: 0,
-        hpCost: 0,
-        mpCost: -10,
-        description: 'Cast a fireball dealing -15 hp to an enemy, costs 10 mp'
+        hpCost: 15,
+        mpCost: 15,
+        description: 'Take a rest, restore 15 HP, 15 MP'
     },
     {
         _id: 's102',
@@ -53,12 +53,39 @@ const spells = [
     },
     {
         _id: 's106',
-        name: 'Rest',
+        name: 'Fireball',
+        hpDiff: -15,
+        mpDiff: 0,
+        hpCost: 0,
+        mpCost: -10,
+        description: 'Cast a fireball dealing -15 hp to an enemy, costs 10 mp'
+    },
+    {
+        _id: 's107',
+        name: 'Self combustion',
+        hpDiff: -40,
+        mpDiff: 0,
+        hpCost: -30,
+        mpCost: 0,
+        description: 'Deal 40 HP damage to the enemy and 30 HP damage to yourself'
+    },
+    {
+        _id: 's108',
+        name: 'Star Gazing',
         hpDiff: 0,
         mpDiff: 0,
-        hpCost: 15,
-        mpCost: 15,
-        description: 'Take a rest, restore 15 HP, 15 MP'
+        hpCost: -40,
+        mpCost: 70,
+        description: 'Gaze to the sky, restore 70 MP, for 40 HP'
+    },
+    {
+        _id: 's108',
+        name: 'Magic arrow',
+        hpDiff: -15,
+        mpDiff: -15,
+        hpCost: 0,
+        mpCost: -25,
+        description: 'Shot a magic arrow, deal 15 HP and 15 MP to the enemy for 25 MP'
     },
 ]
 

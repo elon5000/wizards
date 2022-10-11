@@ -6,10 +6,20 @@ header {
     justify-content: space-between;
 }
 
-.battle-log-btn {
+.game-btns-container {
+    width: 26%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header-btn {
     border: none;
     cursor: pointer;
     background: none;
     font-size: 1.8rem;
     color: var(--main-yellow);
+}
+
+.header-btn:hover {
+    transform: scale(1.1);
 }

@@ -17,9 +17,14 @@
                 Wizards&nbsp
                 <i class="fa-solid fa-hand-sparkles"></i>
             </h1>
-            <button class="hidden battle-log-btn" onclick="onToggleLog()" title="Toggle battle log">
-                <i class="fa-solid fa-scroll"></i>
-            </button>
+            <div class="flex game-btns-container">
+                <button class="header-btn shop-btn" onclick="onToggleShop()" title="Toggle shop">
+                    <i class="fa-solid fa-sack-dollar"></i>
+                </button>
+                <button class="hidden header-btn battle-log-btn" onclick="onToggleLog()" title="Toggle battle log">
+                    <i class="fa-solid fa-scroll"></i>
+                </button>
+            </div>
         </header>
         <div class="flex setting-container">
             <form class="flex" onsubmit="onStart(event)">
@@ -51,6 +56,12 @@
                 </button>
                 <div class="grid spells-container"></div>
             </div>
+            <section class="flex hidden shop">
+                <div class="flex shop-container">HELLO SPELL SHOP</div>
+                <button class="close-modal-btn" title="Close shop" onclick="onToggleShop()">
+                    <i class="fa-solid fa-x"></i>
+                </button>
+            </section>
             <section class="flex hidden batlle-log">
                 <div class="flex battle-log-container"></div>
                 <button class="close-modal-btn" title="Close battle log" onclick="onToggleLog()">

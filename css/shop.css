@@ -1,4 +1,4 @@
-.batlle-log {
+.shop {
     top: 0;
     left: 0;
     width: 100vw;
@@ -14,7 +14,7 @@
     background: rgba(0, 0, 0, 0.845);
 }
 
-.batlle-log>.close-modal-btn {
+.shop >.close-modal-btn {
     top: 2%;
     right: 6%;
     cursor: pointer;
@@ -24,30 +24,17 @@
     text-shadow: 4px 4px 6px rgb(21, 21, 21);
 }
 
-.batlle-log>.close-modal-btn:active {
-    transform: scale(0.95);
-    color: rgb(160, 160, 160);
-}
-
-.battle-log-container {
+.shop-container {
     width: 88vw;
     height: 100%;
     display: block;
     overflow-y: scroll;
 }
 
-.battle-log-container::-webkit-scrollbar {
+.shop-container::-webkit-scrollbar {
     width: 0;
 }
 
-.battle-log-line {
-    width: 100%;
-}
-
-.log-text {
-    width: 100%;
-    padding: 8px 0px 8px 0px;
-    font-weight: 400;
-    font-size: 1.2rem;
-    color: whitesmoke;
+.shop-container > .purchsed {
+    background: white;
 }

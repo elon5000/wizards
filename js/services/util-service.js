@@ -1,5 +1,6 @@
 export const utilService = {
     makeId,
+    getRandomInt,
     getRandomColor
 }
 
@@ -7,7 +8,7 @@ function getRandomColor() {
     const characters = '0123456789ABCDEF'
     let color = '#'
     for (let i = 0; i < 6; i++) {
-        color += characters[_getRandomInt(0, characters.length)]
+        color += characters[getRandomInt(0, characters.length)]
     }
     return color
 
@@ -23,7 +24,7 @@ function makeId(length = 6) {
     return id
 }
 
-function _getRandomInt(min, max) {
+function getRandomInt(min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
     return Math.floor(Math.random() * (max - min) + min)

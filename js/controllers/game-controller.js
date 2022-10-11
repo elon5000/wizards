@@ -10,6 +10,7 @@ window.onStart = onStart
 window.onTarget = onTarget
 window.onSetSpell = onSetSpell
 window.onToggleLog = onToggleLog
+window.onToggleShop = onToggleShop
 window.onCloseSpellsModal = onCloseSpellsModal
 
 const gElGame = document.querySelector('.game')
@@ -39,16 +40,22 @@ function onStart(ev) {
     ev.preventDefault()
     _setNumOfPlayers()
     wizardService.setWizards(gGame.numOfPlayers)
-    _setCurrTurn(0)
+    _setCurrTurn()
     _setIsGameOn()
     _renderBatlleLog()
     _renderWizards()
     _renderSpells()
+    _renderShop()
     _toggleHidden([gElSettings, gElGame, gElBattleLogBtn])
 }
 
 function onInit() {
     gGame.numOfPlayers = document.querySelector('select').value
+}
+
+function onToggleShop() {
+    const elShop = document.querySelector('.shop')
+    _toggleHidden([elShop])
 }
 
 function onToggleLog() {
@@ -85,6 +92,7 @@ function onTarget(targetId) {
     _setCurrTurn()
     _renderWizards()
     _renderSpells()
+    _renderShop()
     _setSelectedSpell(null)
     _checkWin()
 }
@@ -132,6 +140,18 @@ function _renderMessageModal(message) {
     setTimeout(() => _toggleHidden([elMessageModal]), 2500)
 }
 
+function _renderShop() {
+    const elShopContainer = document.querySelector('.shop-container')
+    const currWizard = wizardService.getWizards()[gGame.currentTurn]
+    const spells = spellService.getSpells()
+    let strHTMLs = spells.map(spell => {
+        return `<div class="flex spell-item-container ${(currWizard.spells.includes(spell)) ? 'purchsed' : ''}">
+        ${spell.name}
+        </div>`
+    })
+    elShopContainer.innerHTML = strHTMLs.join('')
+}
+
 function _renderBatlleLog() {
     const elBattleLogContainer = document.querySelector('.battle-log-container')
     const logs = logService.getLogs()
@@ -158,7 +178,7 @@ function _setSelectedSpell(spell) {
 
 function _setCurrTurn(turn) {
     if (turn) gGame.currentTurn = turn
-    else if (gGame.currentTurn < wizardService.getWizards().length - 1) {
+    else if (gGame.currentTurn && gGame.currentTurn < wizardService.getWizards().length - 1) {
         gGame.currentTurn += 1
     } else {
         gGame.currentTurn = 0
