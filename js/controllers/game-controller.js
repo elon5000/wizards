@@ -10,11 +10,12 @@ window.onStart = onStart
 window.onTarget = onTarget
 window.onSetSpell = onSetSpell
 window.onToggleLog = onToggleLog
+window.onCloseSpellsModal = onCloseSpellsModal
 
 const gElGame = document.querySelector('.game')
+const gElSpellsModal = document.querySelector('.spell-modal')
 const gElSettings = document.querySelector('.setting-container')
 const gElBattleLogBtn = document.querySelector('.battle-log-btn')
-const gElSpellModal = document.querySelector('.spell-modal')
 
 
 const gGame = {
@@ -55,6 +56,10 @@ function onToggleLog() {
     _toggleHidden([elBattleLog])
 }
 
+function onCloseSpellsModal() {
+    gElSpellsModal.classList.add('hidden')
+}
+
 function onSetSpell(ev, spellId) {
     ev.stopPropagation()
     if (!gGame.isGameOn) return
@@ -62,7 +67,7 @@ function onSetSpell(ev, spellId) {
     const currWizard = wizardService.getWizards()[gGame.currentTurn]
     if (spell.mpCost < 0 && currWizard.mp < -spell.mpCost) return _renderMessageModal('Not enough mana')
     _setSelectedSpell(spell)
-    _toggleHidden([gElSpellModal])
+    _toggleHidden([gElSpellsModal])
     if (spell.name === 'Rest') {
         onTarget(null)
     }
@@ -71,10 +76,10 @@ function onSetSpell(ev, spellId) {
 function onTarget(targetId) {
     const currWizard = wizardService.getWizards()[gGame.currentTurn]
     if (targetId === currWizard._id && !gGame.selectedSpell) {
-        return _toggleHidden([gElSpellModal])
+        return _toggleHidden([gElSpellsModal])
     }
     if (!gGame.selectedSpell) return
-    _toggleHidden([gElSpellModal])
+    _toggleHidden([gElSpellsModal])
     _handleSpell(targetId)
     _renderBatlleLog()
     _setCurrTurn()
@@ -106,7 +111,7 @@ function _renderWizards() {
 
 function _renderSpells() {
     if (!gGame.isGameOn) return
-    const elSpellModal = document.querySelector('.spell-modal')
+    const elSpellsContainer = document.querySelector('.spells-container')
     const wizard = wizardService.getWizards()[gGame.currentTurn]
     const strHTMLs = wizard.spells.map((spell => {
         return `<div class="flex listed-spell spell-${spell._id}"
@@ -116,7 +121,7 @@ function _renderSpells() {
         </div>
         `
     }))
-    elSpellModal.innerHTML = strHTMLs.join('')
+    elSpellsContainer.innerHTML = strHTMLs.join('')
 }
 
 function _renderMessageModal(message) {

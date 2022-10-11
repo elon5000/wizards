@@ -15,8 +15,8 @@
 }
 
 .batlle-log>.close-modal-btn {
-    right: 8%;
-    bottom: 6%;
+    top: 3%;
+    right: 6%;
     cursor: pointer;
     font-size: 2.4rem;
     position: absolute;

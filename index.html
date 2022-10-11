@@ -45,7 +45,12 @@
         <section class="hidden flex game">
             <div class="grid game-board">
             </div>
-            <div class="grid spell-modal"></div>
+            <div class="spell-modal">
+                <button class="close-modal-btn" title="close spells modal" onclick="onCloseSpellsModal()">
+                    <i class="fa-solid fa-x"></i>
+                </button>
+                <div class="grid spells-container"></div>
+            </div>
             <section class="flex hidden batlle-log">
                 <div class="flex battle-log-container"></div>
                 <button class="close-modal-btn" title="close battle log" onclick="onToggleLog()">
@@ -61,7 +66,6 @@
     <script type="module" src="js/services/spell-service.js"></script>
     <script type="module" src="js/services/wizard-service.js"></script>
     <script type="module" src="js/services/log-service.js"></script>
-    <script type="module" src="js/controllers/wizards-controller.js"></script>
     <script type="module" src="js/controllers/game-controller.js"></script>
 </body>
 
