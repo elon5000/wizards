@@ -17,12 +17,12 @@ const spells = [
     },
     {
         _id: 's102',
-        name: 'Lightning bolt',
-        hpDiff: -30,
+        name: 'Fireball',
+        hpDiff: -15,
         mpDiff: 0,
-        hpCost: -5,
-        mpCost: -20,
-        description: 'Cast a lightning bolt dealing -30 hp to an enemy, costs 5 hp, 20 mp'
+        hpCost: 0,
+        mpCost: -10,
+        description: 'Cast a fireball dealing -15 hp to an enemy, costs 10 mp'
     },
     {
         _id: 's103',
@@ -53,12 +53,12 @@ const spells = [
     },
     {
         _id: 's106',
-        name: 'Fireball',
-        hpDiff: -15,
+        name: 'Lightning bolt',
+        hpDiff: -30,
         mpDiff: 0,
-        hpCost: 0,
-        mpCost: -10,
-        description: 'Cast a fireball dealing -15 hp to an enemy, costs 10 mp'
+        hpCost: -5,
+        mpCost: -20,
+        description: 'Cast a lightning bolt dealing -30 hp to an enemy, costs 5 hp, 20 mp'
     },
     {
         _id: 's107',
