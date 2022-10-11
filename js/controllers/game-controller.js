@@ -146,7 +146,9 @@ function _renderShop() {
     const spells = spellService.getSpells()
     let strHTMLs = spells.map(spell => {
         return `<div class="flex spell-item-container ${(currWizard.spells.includes(spell)) ? 'purchsed' : ''}">
-        ${spell.name}
+        <div class="spell-cost-container">${spell.cost}</div>
+        <div class="spell-cost-container">${spell.name}</div>
+        <div class="spell-cost-container">${spell.description}</div>
         </div>`
     })
     elShopContainer.innerHTML = strHTMLs.join('')
@@ -178,7 +180,7 @@ function _setSelectedSpell(spell) {
 
 function _setCurrTurn(turn) {
     if (turn) gGame.currentTurn = turn
-    else if (gGame.currentTurn && gGame.currentTurn < wizardService.getWizards().length - 1) {
+    else if (gGame.currentTurn && gGame.currentTurn <= wizardService.getWizards().length - 1) {
         gGame.currentTurn += 1
     } else {
         gGame.currentTurn = 0
