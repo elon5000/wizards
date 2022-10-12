@@ -17,7 +17,7 @@ header {
     cursor: pointer;
     background: none;
     font-size: 1.8rem;
-    color: var(--main-yellow);
+    color: var(--light-gray);
 }
 
 .header-btn:hover {

@@ -1,4 +1,9 @@
 :root {
+    --dark-gray: rgb(48, 50, 61);
+    --medium-gray: rgb(77, 80, 97);
+    --light-gray: rgb(205, 209, 196);
+    --main-yellow: rgb(232, 197, 71);
     --main-red: rgb(97, 2, 2);
-    --main-yellow: rgb(194, 187, 123);
+    --main-blue: rgb(92, 128, 188);
+    --main-trasparent-black: rgba(0, 0, 0, 0.92)
 }

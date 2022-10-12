@@ -11,7 +11,7 @@
     justify-content: center;
     padding: 40px 0px 40px 0px;
     animation: slide-down 0.4s;
-    background: rgba(0, 0, 0, 0.845);
+    background: var(--main-trasparent-black);
 }
 
 .shop >.close-modal-btn {
@@ -36,7 +36,7 @@
 }
 
 .spell-item-container {
-    color: rgb(245, 245, 245);
+    color: var(--light-gray);
     padding: 4px;
     height: 120px;
     font-size: 0.8rem;
@@ -53,7 +53,7 @@
 }
 .spell-cost-container {
     font-size: 1.6rem;
-    color: goldenrod;
+    color: var(--main-yellow);
 }
 
 .spell-name-container {

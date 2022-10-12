@@ -15,8 +15,8 @@
     transition: 0.2s;
     font-weight: 500;
     font-family: fantasy;
-    color: var(--main-yellow);
-    text-shadow: 2px 2px 10px rgba(240, 237, 219, 0.416);
+    color: var(--light-gray);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.737);
 }
 
 .logo:hover {

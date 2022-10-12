@@ -29,7 +29,8 @@ function setWizards(length = 2) {
     }
 }
 
-function updateWizards(casterIdx, targetId, spell) {
+function updateWizards(casterIdx, targetId, selectedSpell) {
+    const spell = {...selectedSpell}
     spell.hpDiff = (spell.hpDiff * wizards[casterIdx].level)
     spell.mpDiff = (spell.mpDiff * wizards[casterIdx].level)
     wizards[casterIdx].hp += spell.hpCost

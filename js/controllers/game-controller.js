@@ -88,15 +88,15 @@ function onTarget(targetId) {
         return _toggleHidden([gElSpellsModal])
     }
     if (!gGame.selectedSpell) return
-    _toggleHidden([gElSpellsModal])
     _handleSpell(targetId)
+    _checkWin()
+    _toggleHidden([gElSpellsModal])
     _renderBatlleLog()
     _setCurrTurn()
     _renderWizards()
     _renderSpells()
     _renderShop()
     _setSelectedSpell(null)
-    _checkWin()
 }
 
 function onPurchaseSpell(spellId) {
@@ -221,6 +221,7 @@ function _checkWin() {
         _setIsGameOn()
         _renderMessageModal('The winner is ' + wizards[0]._id)
         setTimeout(onReset, 3000)
+        return
     }
 }
 

@@ -33,12 +33,12 @@ form {
     font-size: 1.6rem;
     border-radius: 8px;
     color: rgb(18, 18, 18);
-    background: rgb(222, 222, 222);
+    background: var(--light-gray);
 }
 
 .input-container > select > option {
-    background: var(--main-yellow);
     cursor: pointer;
+    background: var(--light-gray);
 }
 
 .start-btn {
@@ -49,5 +49,5 @@ form {
     background: none;
     width: fit-content;
     font-family: fantasy;
-    color: var(--main-yellow);
+    color: var(--light-gray);
 }
