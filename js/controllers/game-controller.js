@@ -77,7 +77,7 @@ function onSetSpell(ev, spellId) {
     if (spell.mpCost < 0 && currWizard.mp < -spell.mpCost) return _renderMessageModal('Not enough mana')
     _setSelectedSpell(spell)
     _toggleHidden([gElSpellsModal])
-    if (spell.name === 'Rest') {
+    if (spell.name === 'Rest' || spell.name === 'Star Gazing' ) {
         onTarget(null)
     }
 }
@@ -102,11 +102,16 @@ function onTarget(targetId) {
 function onPurchaseSpell(spellId) {
     const spell = spellService.getSpellById(spellId)
     const wizard = wizardService.getWizards()[gGame.currentTurn]
-    if (spell.goldCost > wizard.gold) {
+    if (wizard.spells.includes(spell)) {
+        _renderMessageModal('Already purchsed')
+        return
+    } else if (spell.goldCost > wizard.gold) {
         _renderMessageModal('Not enough gold')
         return
     }
     wizardService.addSpell(spell, gGame.currentTurn)
+    _renderShop()
+    _renderWizards()
     _renderSpells()
     onToggleShop()
 }
@@ -135,7 +140,7 @@ function _renderWizards() {
 
 function _renderSpells() {
     if (!gGame.isGameOn) return
-    const elSpellsContainer = document.querySelector('.spells-container')
+    const elSpellsContainer = document.querySelector('.spell-list')
     const wizard = wizardService.getWizards()[gGame.currentTurn]
     const strHTMLs = wizard.spells.map((spell => {
         return `<div class="flex listed-spell spell-${spell._id}"
@@ -215,6 +220,7 @@ function _checkWin() {
     if (wizards.length === 1) {
         _setIsGameOn()
         _renderMessageModal('The winner is ' + wizards[0]._id)
+        setTimeout(onReset, 3000)
     }
 }
 

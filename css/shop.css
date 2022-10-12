@@ -36,7 +36,7 @@
 }
 
 .spell-item-container {
-    color: rgba(245, 245, 245, 0.68);
+    color: rgb(245, 245, 245);
     padding: 4px;
     height: 120px;
     font-size: 0.8rem;

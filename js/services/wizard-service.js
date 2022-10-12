@@ -70,5 +70,6 @@ function _makeWizard() {
 }
 
 function addSpell(spell, wizardIdx) {
+    wizards[wizardIdx].gold -= spell.goldCost
     wizards[wizardIdx].spells.push(spell)
 }

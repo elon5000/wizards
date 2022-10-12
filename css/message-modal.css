@@ -4,10 +4,13 @@
     width: 88vw;
     height: 30%;
     z-index: 100;
-    font-size: 1.6rem;
+    z-index: 10000;
     position: fixed;
+    font-size: 1.6rem;
+    border-radius: 6px;
     align-items: center;
     font-family: fantasy;
     justify-content: center;
     transform: translate(-50%, -50%);
+    background: rgb(192, 191, 191);
 }
