@@ -31,6 +31,7 @@ const spells = [
         mpDiff: -15,
         hpCost: 0,
         mpCost: -20,
+        goldCost: 5,
         description: 'Cast an ice breeze dealing -5 hp and -15 mp to an enemy, costs 20 mp'
     },
     {
@@ -40,6 +41,7 @@ const spells = [
         mpDiff: 0,
         hpCost: 0,
         mpCost: -30,
+        goldCost: 5,
         description: 'Cast a healing circle healing the target 20 hp, costs 25 mp'
     },
     {
@@ -49,6 +51,7 @@ const spells = [
         mpDiff: -20,
         hpCost: -20,
         mpCost: 20,
+        goldCost: 5,
         description: 'Drain an enemy mana by 20 mp, costs 10 hp'
     },
     {
@@ -58,6 +61,7 @@ const spells = [
         mpDiff: 0,
         hpCost: -5,
         mpCost: -20,
+        goldCost: 5,
         description: 'Cast a lightning bolt dealing -30 hp to an enemy, costs 5 hp, 20 mp'
     },
     {
@@ -67,6 +71,7 @@ const spells = [
         mpDiff: 0,
         hpCost: -30,
         mpCost: 0,
+        goldCost: 5,
         description: 'Deal 40 HP damage to the enemy and 30 HP damage to yourself'
     },
     {
@@ -76,6 +81,7 @@ const spells = [
         mpDiff: 0,
         hpCost: -40,
         mpCost: 70,
+        goldCost: 5,
         description: 'Gaze to the sky, restore 70 MP, for 40 HP'
     },
     {
@@ -85,6 +91,7 @@ const spells = [
         mpDiff: -15,
         hpCost: 0,
         mpCost: -25,
+        goldCost: 5,
         description: 'Shot a magic arrow, deal 15 HP and 15 MP to the enemy for 25 MP'
     },
 ]

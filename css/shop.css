@@ -35,6 +35,31 @@
     width: 0;
 }
 
+.spell-item-container {
+    color: rgba(245, 245, 245, 0.68);
+    padding: 4px;
+    height: 120px;
+    font-size: 0.8rem;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+.spell-item-container > * {
+    height: 100%;
+    padding: 6px;
+    align-items: center;
+    justify-content: center;
+}
+.spell-cost-container {
+    font-size: 1.6rem;
+    color: goldenrod;
+}
+
+.spell-name-container {
+    font-size: 1rem;
+}
+
 .shop-container > .purchsed {
-    background: white;
+    background: rgba(146, 145, 145, 0.19);
 }

@@ -1,6 +1,7 @@
 .wizard {
     cursor: pointer;
     position: relative;
+    border-radius: 6px;
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;

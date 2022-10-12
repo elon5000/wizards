@@ -11,9 +11,11 @@ window.onTarget = onTarget
 window.onSetSpell = onSetSpell
 window.onToggleLog = onToggleLog
 window.onToggleShop = onToggleShop
+window.onPurchaseSpell = onPurchaseSpell
 window.onCloseSpellsModal = onCloseSpellsModal
 
 const gElGame = document.querySelector('.game')
+const gElShopBtn = document.querySelector('.shop-btn')
 const gElSpellsModal = document.querySelector('.spell-modal')
 const gElSettings = document.querySelector('.setting-container')
 const gElBattleLogBtn = document.querySelector('.battle-log-btn')
@@ -33,7 +35,7 @@ function onReset() {
     gGame.numOfPlayers = null
     gGame.selectedSpell = null
     logService.clearLogs()
-    _toggleHidden([gElSettings, gElGame, gElBattleLogBtn])
+    _toggleHidden([gElSettings, gElGame, gElBattleLogBtn, gElShopBtn])
 }
 
 function onStart(ev) {
@@ -46,7 +48,7 @@ function onStart(ev) {
     _renderWizards()
     _renderSpells()
     _renderShop()
-    _toggleHidden([gElSettings, gElGame, gElBattleLogBtn])
+    _toggleHidden([gElSettings, gElGame, gElBattleLogBtn, gElShopBtn])
 }
 
 function onInit() {
@@ -97,6 +99,18 @@ function onTarget(targetId) {
     _checkWin()
 }
 
+function onPurchaseSpell(spellId) {
+    const spell = spellService.getSpellById(spellId)
+    const wizard = wizardService.getWizards()[gGame.currentTurn]
+    if (spell.goldCost > wizard.gold) {
+        _renderMessageModal('Not enough gold')
+        return
+    }
+    wizardService.addSpell(spell, gGame.currentTurn)
+    _renderSpells()
+    onToggleShop()
+}
+
 function _renderWizards() {
     const wizards = wizardService.getWizards()
     const elBoard = document.querySelector('.game-board')
@@ -127,7 +141,8 @@ function _renderSpells() {
         return `<div class="flex listed-spell spell-${spell._id}"
         onclick="onSetSpell(event ,'${spell._id}')" 
         title="${spell.description}">
-        ${spell.name}
+        <h3> ${spell.name} </h3>
+        <h4> ${spell.description} </h4>
         </div>
         `
     }))
@@ -147,10 +162,11 @@ function _renderShop() {
     const spells = spellService.getSpells().slice()
     spells.splice(0, 2)
     let strHTMLs = spells.map(spell => {
-        return `<div class="flex spell-item-container ${(currWizard.spells.includes(spell)) ? 'purchsed' : ''}">
-        <div class="spell-cost-container">${spell.cost}</div>
-        <div class="spell-cost-container">${spell.name}</div>
-        <div class="spell-cost-container">${spell.description}</div>
+        return `<div class="flex spell-item-container ${(currWizard.spells.includes(spell)) ? 'purchsed' : ''}"
+        onclick="onPurchaseSpell('${spell._id}')">
+        <div class="flex spell-cost-container">${spell.goldCost}&nbsp<i class="fa-solid fa-hand-holding-dollar"></i></div>
+        <div class="flex spell-name-container">${spell.name}</div>
+        <div class="flex spell-desc-container">${spell.description}</div>
         </div>`
     })
     elShopContainer.innerHTML = strHTMLs.join('')

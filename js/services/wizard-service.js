@@ -8,6 +8,7 @@ export const wizardService = {
     getWizardById,
     setWizards,
     updateWizards,
+    addSpell
 }
 
 const wizards = []
@@ -40,6 +41,7 @@ function updateWizards(casterIdx, targetId, spell) {
         const targetIdx = wizards.findIndex(wizard => wizard._id === targetId)
         wizards[targetIdx].hp += spell.hpDiff
         if (wizards[targetIdx].hp <= 0) {
+            wizards[casterIdx].gold += 5
             wizards[casterIdx].level += 1
             wizards.splice(targetIdx, 1)
             return
@@ -65,4 +67,8 @@ function _makeWizard() {
     wizard.spells.push(spellService.getSpellById('s102'))
     wizard.spells.push(spells[spellIdx])
     return wizard
+}
+
+function addSpell(spell, wizardIdx) {
+    wizards[wizardIdx].spells.push(spell)
 }
