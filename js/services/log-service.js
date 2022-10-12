@@ -12,9 +12,9 @@ const logs = []
 
 function makeLog(casterIdx, targetId, spell) {
     const log = {
+        spell,
         caster: wizardService.getWizards()[casterIdx],
         target: (targetId) ? wizardService.getWizardById(targetId) : null,
-        spell
     }
     logs.push(log)
 }

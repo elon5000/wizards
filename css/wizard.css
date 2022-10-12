@@ -40,7 +40,7 @@
 }
 
 .player {
-    border: 6px solid whitesmoke;
+    outline: 6px solid whitesmoke;
 }
 
 .target {

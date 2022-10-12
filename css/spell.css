@@ -3,7 +3,7 @@
     left: 50%;
     bottom: 0;
     width: 100vw;
-    height: 50vh;
+    height: 34vh;
     position: fixed;
     animation: slide-up 0.4s;
     transform: translate(-50%, 0%);
@@ -21,16 +21,16 @@
     width: 100%;
     height: 100%;
     padding: 8px;
-    grid-auto-rows: repeat(2, minmax(30px, 1fr));
-    grid-template-columns: repeat(3, minmax(30px, 1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(160px, 1fr);
 }
 
 .spell-modal > .close-modal-btn {
     top: 8px;
-    right: -10px;
+    right: -26px;
     z-index: 5;
-    padding: 4px 12px;
     font-size: 2rem;
+    padding: 4px 12px;
     border-radius: 8px;
     position: absolute;
     color: var(--main-yellow);
@@ -47,7 +47,7 @@
     box-sizing: border-box;
     flex-direction: column;
     color: var(--dark-gray);
-    justify-content: space-evenly;
+    justify-content: flex-start;
     background: var(--light-gray);
 }
 
@@ -61,7 +61,12 @@
     transform: scale(0.90);
 }
 
+.listed-spell > h3 {
+    padding: 6px 0 12px 0;
+    justify-self: flex-start;
+}
+
 .listed-spell > h4 {
     font-weight: 400;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
 }

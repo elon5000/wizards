@@ -59,10 +59,10 @@ const spells = [
         name: 'Lightning bolt',
         hpDiff: -30,
         mpDiff: 0,
-        hpCost: -5,
+        hpCost: -10,
         mpCost: -20,
         goldCost: 5,
-        description: 'Cast a lightning bolt dealing -30 hp to an enemy, costs 5 hp, 20 mp'
+        description: 'Cast a lightning bolt dealing -30 hp to an enemy, costs 10 hp, 20 mp'
     },
     {
         _id: 's107',
@@ -79,20 +79,20 @@ const spells = [
         name: 'Star Gazing',
         hpDiff: 0,
         mpDiff: 0,
-        hpCost: -40,
-        mpCost: 70,
+        hpCost: -30,
+        mpCost: 60,
         goldCost: 5,
-        description: 'Gaze to the sky, restore 70 MP, for 40 HP'
+        description: 'Gaze to the sky, restore 60 MP, for 30 HP'
     },
     {
         _id: 's108',
         name: 'Magic arrow',
-        hpDiff: -15,
-        mpDiff: -15,
+        hpDiff: -25,
+        mpDiff: -10,
         hpCost: 0,
         mpCost: -25,
         goldCost: 5,
-        description: 'Shot a magic arrow, deal 15 HP and 15 MP to the enemy for 25 MP'
+        description: 'Shot a magic arrow, deal 25 HP and 10 MP to the enemy for 25 MP'
     },
 ]
 

@@ -1,8 +1,8 @@
 'use strict'
 
+import { logService } from '../services/log-service.js'
 import { spellService } from '../services/spell-service.js'
 import { wizardService } from '../services/wizard-service.js'
-import { logService } from '../services/log-service.js'
 
 window.onInit = onInit
 window.onReset = onReset
@@ -182,7 +182,7 @@ function _renderBatlleLog() {
     const logs = logService.getLogs()
     let strHTMLs = logs.map(log => {
         return `<p class="log-text">
-        ${log.caster._id} used ${log.spell.name} ${(!log.caster._id) ? 'he killed himself' : ''} ${(log.target) ? `on ${log.target._id}` : ''}
+        ${log.caster._id} used ${log.spell.name} ${(log.target) ? `on ${log.target._id} for ${log.spell.hpDiff} HP` : ''}
         </p>`
     })
     elBattleLogContainer.innerHTML = strHTMLs.join('')
