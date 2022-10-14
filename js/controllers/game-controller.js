@@ -89,11 +89,12 @@ function onTarget(targetId) {
     }
     if (!gGame.selectedSpell) return
     _handleSpell(targetId)
-    _checkWin()
     _toggleHidden([gElSpellsModal])
-    _renderBatlleLog()
     _setCurrTurn()
     _renderWizards()
+    _renderBatlleLog()
+    _checkWin()
+    if (!gGame.isGameOn) return
     _renderSpells()
     _renderShop()
     _setSelectedSpell(null)

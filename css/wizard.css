@@ -24,15 +24,15 @@
 }
 
 .wizard-hp {
-    color: rgb(139, 4, 4);
+    color: var(--main-red);
 }
 
 .wizard-mp {
-    color: rgb(13, 4, 139);
+    color: var(--main-blue);
 }
 
 .wizard-gold {
-    color: goldenrod;
+    color: var(--main-yellow);
 }
 
 .wizard-level {
@@ -40,7 +40,7 @@
 }
 
 .player {
-    outline: 6px solid whitesmoke;
+    box-shadow: 0 0 20px var(--light-gray);
 }
 
 .target {

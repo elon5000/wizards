@@ -48,6 +48,5 @@ form {
     font-size: 3rem;
     background: none;
     width: fit-content;
-    font-family: fantasy;
     color: var(--light-gray);
 }

@@ -44,11 +44,16 @@
     width: 100%;
     padding: 4px;
     height: 120px;
+    cursor: pointer;
     font-size: 0.8rem;
     flex-direction: row;
     align-content: center;
     justify-content: center;
     color: var(--light-gray);
+}
+
+.spell-item-container:hover{
+    transform: scale(1.02);
 }
 
 .spell-item-container > * {
