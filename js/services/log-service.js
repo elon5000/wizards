@@ -16,6 +16,7 @@ function makeLog(casterIdx, targetId, spell) {
         caster: wizardService.getWizards()[casterIdx],
         target: (targetId) ? wizardService.getWizardById(targetId) : null,
     }
+    log.spell.hpDiff = log.spell.hpDiff * log.caster.level 
     logs.push(log)
 }
 

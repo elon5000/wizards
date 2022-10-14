@@ -162,7 +162,7 @@ function _renderMessageModal(message) {
 }
 
 function _renderShop() {
-    const elShopContainer = document.querySelector('.shop-container')
+    const elShopList = document.querySelector('.shop-list')
     const currWizard = wizardService.getWizards()[gGame.currentTurn]
     const spells = spellService.getSpells().slice()
     spells.splice(0, 2)
@@ -174,7 +174,7 @@ function _renderShop() {
         <div class="flex spell-desc-container">${spell.description}</div>
         </div>`
     })
-    elShopContainer.innerHTML = strHTMLs.join('')
+    elShopList.innerHTML = strHTMLs.join('')
 }
 
 function _renderBatlleLog() {

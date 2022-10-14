@@ -85,7 +85,7 @@ const spells = [
         description: 'Gaze to the sky, restore 60 MP, for 30 HP'
     },
     {
-        _id: 's108',
+        _id: 's109',
         name: 'Magic arrow',
         hpDiff: -25,
         mpDiff: -10,
