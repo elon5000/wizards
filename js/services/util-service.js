@@ -1,17 +1,11 @@
 export const utilService = {
     makeId,
     getRandomInt,
-    getRandomColor
+    getColors
 }
 
-function getRandomColor() {
-    const characters = '0123456789ABCDEF'
-    let color = '#'
-    for (let i = 0; i < 6; i++) {
-        color += characters[getRandomInt(0, characters.length)]
-    }
-    return color
-
+function getColors() {
+    return ['#8ca682', '#ac909d', '#224b5e', '#965071', '#6c553b', '#484752', '#124f51', '#5e4848', '#36523d', '#a15d41']
 }
 
 function makeId(length = 6) {

@@ -28,3 +28,7 @@
     border: none;
     background: none;
 }
+
+.shakey {
+    animation: shake 0.2s;
+}

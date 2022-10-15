@@ -11,44 +11,49 @@ export const wizardService = {
     addSpell
 }
 
-const wizards = []
+const WIZARDS = []
 
 function getWizards() {
-    return wizards
+    return WIZARDS
 }
 
 function getWizardById(wizardId) {
-    return wizards.find(wizard => wizard._id === wizardId)
+    return WIZARDS.find(wizard => wizard._id === wizardId)
 }
 
 function setWizards(length = 2) {
-    if (wizards.length) wizards.splice(0, wizards.length)
+    const colors = utilService.getColors()
+    if (WIZARDS.length) WIZARDS.splice(0, WIZARDS.length)
     for (let i = 0; i < length; i++) {
         const wizard = _makeWizard()
-        wizards.push(wizard)
+        const colorIdx = utilService.getRandomInt(0 , colors.length)
+        const wizardColor = colors[colorIdx]
+        colors.splice(colorIdx, 1)
+        wizard.color = wizardColor
+        WIZARDS.push(wizard)
     }
 }
 
 function updateWizards(casterIdx, targetId, selectedSpell) {
     const spell = {...selectedSpell}
-    spell.hpDiff = (spell.hpDiff * wizards[casterIdx].level)
-    spell.mpDiff = (spell.mpDiff * wizards[casterIdx].level)
-    wizards[casterIdx].hp += spell.hpCost
-    wizards[casterIdx].mp += spell.mpCost
-    wizards[casterIdx].gold += 1
-    if (wizards[casterIdx].hp <= 0) wizards.splice(casterIdx, 1)
-    else if (wizards[casterIdx].mp < 0) wizards[casterIdx].mp = 0
+    spell.hpDiff = (spell.hpDiff * WIZARDS[casterIdx].level)
+    spell.mpDiff = (spell.mpDiff * WIZARDS[casterIdx].level)
+    WIZARDS[casterIdx].hp += spell.hpCost
+    WIZARDS[casterIdx].mp += spell.mpCost
+    WIZARDS[casterIdx].gold += 1
+    if (WIZARDS[casterIdx].hp <= 0) WIZARDS.splice(casterIdx, 1)
+    else if (WIZARDS[casterIdx].mp < 0) WIZARDS[casterIdx].mp = 0
     if (targetId) {
-        const targetIdx = wizards.findIndex(wizard => wizard._id === targetId)
-        wizards[targetIdx].hp += spell.hpDiff
-        if (wizards[targetIdx].hp <= 0) {
-            wizards[casterIdx].gold += 5
-            wizards[casterIdx].level += 1
-            wizards.splice(targetIdx, 1)
+        const targetIdx = WIZARDS.findIndex(wizard => wizard._id === targetId)
+        WIZARDS[targetIdx].hp += spell.hpDiff
+        if (WIZARDS[targetIdx].hp <= 0) {
+            WIZARDS[casterIdx].gold += 5
+            WIZARDS[casterIdx].level += 1
+            WIZARDS.splice(targetIdx, 1)
             return
         }
-        wizards[targetIdx].mp += spell.mpDiff
-        if (wizards[targetIdx].mp < 0) wizards[targetIdx].mp = 0
+        WIZARDS[targetIdx].mp += spell.mpDiff
+        if (WIZARDS[targetIdx].mp < 0) WIZARDS[targetIdx].mp = 0
     }
 }
 
@@ -57,7 +62,6 @@ function _makeWizard() {
     const spellIdx = utilService.getRandomInt(2, spells.length)
     const wizard = {
         _id: utilService.makeId(),
-        color: utilService.getRandomColor(),
         spells: [],
         hp: 100,
         mp: 100,
@@ -71,6 +75,6 @@ function _makeWizard() {
 }
 
 function addSpell(spell, wizardIdx) {
-    wizards[wizardIdx].gold -= spell.goldCost
-    wizards[wizardIdx].spells.push(spell)
+    WIZARDS[wizardIdx].gold -= spell.goldCost
+    WIZARDS[wizardIdx].spells.push(spell)
 }

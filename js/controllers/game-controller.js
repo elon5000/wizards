@@ -88,6 +88,9 @@ function onTarget(targetId) {
         return _toggleHidden([gElSpellsModal])
     }
     if (!gGame.selectedSpell) return
+    const elBody = document.querySelector('body')
+    elBody.classList.add('shakey')
+    setTimeout(()=> elBody.classList.remove('shakey'), 500)
     _handleSpell(targetId)
     _toggleHidden([gElSpellsModal])
     _setCurrTurn()
