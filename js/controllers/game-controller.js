@@ -77,20 +77,25 @@ function onSetSpell(ev, spellId) {
     if (spell.mpCost < 0 && currWizard.mp < -spell.mpCost) return _renderMessageModal('Not enough mana')
     _setSelectedSpell(spell)
     _toggleHidden([gElSpellsModal])
-    if (spell.name === 'Rest' || spell.name === 'Star Gazing' ) {
+    if (spell.name === 'Rest' || spell.name === 'Star Gazing') {
         onTarget(null)
     }
 }
 
-function onTarget(targetId) {
+function onTarget(ev, targetId) {
     const currWizard = wizardService.getWizards()[gGame.currentTurn]
     if (targetId === currWizard._id && !gGame.selectedSpell) {
         return _toggleHidden([gElSpellsModal])
     }
     if (!gGame.selectedSpell) return
     const elBody = document.querySelector('body')
+    const elSpellAnimation = document.querySelector('.spell-animation')
     elBody.classList.add('shakey')
-    setTimeout(()=> elBody.classList.remove('shakey'), 500)
+    _toggleHidden([elSpellAnimation])
+    elSpellAnimation.style.top = '' + ev.clientY + 'px'
+    elSpellAnimation.style.left = '' + ev.clientX + 'px'
+    setTimeout(() => _toggleHidden([elSpellAnimation]), 500)
+    setTimeout(() => elBody.classList.remove('shakey'), 500)
     _handleSpell(targetId)
     _toggleHidden([gElSpellsModal])
     _setCurrTurn()
@@ -127,7 +132,7 @@ function _renderWizards() {
         return `
         <div class="${(gGame.currentTurn === idx) ? 'player' : 'target'} flex wizard wizard-${wizard._id}"
         title="Wizard-${wizard._id}"
-        onclick="onTarget('${wizard._id}')"
+        onclick="onTarget(event, '${wizard._id}')"
         style="background: ${wizard.color}">
         <i class="fa-solid fa-hat-wizard wizard-hat"></i>
         <div class="grid stats-contianer">

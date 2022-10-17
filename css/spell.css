@@ -16,6 +16,10 @@
     overflow-x: scroll;
 }
 
+.spell-list-container::-webkit-scrollbar {
+    width: 0;
+}
+
 .spell-list {
     gap: 8px;
     width: 100%;
@@ -27,8 +31,9 @@
 
 .spell-modal > .close-modal-btn {
     top: 8px;
-    right: -26px;
     z-index: 5;
+    right: -26px;
+    cursor: pointer;
     font-size: 2rem;
     padding: 4px 12px;
     border-radius: 8px;
@@ -36,6 +41,10 @@
     color: var(--main-yellow);
     transform: translate(-100%, -100%);
     background: var(--main-trasparent-black);
+}
+
+.spell-modal > .close-modal-btn:hover {
+   color: var(--light-gray);
 }
 
 .listed-spell {
@@ -69,4 +78,15 @@
 .listed-spell > h4 {
     font-weight: 400;
     font-size: 1.2rem;
+}
+
+.spell-animation {
+    top: 0;
+    width: 50px;
+    height: 50px;
+    z-index: 10000;
+    position: fixed;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: spell-hit infinite 0.5s;
 }
