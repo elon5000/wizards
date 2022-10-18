@@ -1,9 +1,9 @@
-
 .spell-modal {
     left: 50%;
     bottom: 0;
     width: 100vw;
     height: 34vh;
+    z-index: 1000;
     position: fixed;
     animation: slide-up 0.4s;
     transform: translate(-50%, 0%);
@@ -29,7 +29,7 @@
     grid-auto-columns: minmax(160px, 1fr);
 }
 
-.spell-modal > .close-modal-btn {
+.spell-modal>.close-modal-btn {
     top: 8px;
     z-index: 5;
     right: -26px;
@@ -43,8 +43,8 @@
     background: var(--main-trasparent-black);
 }
 
-.spell-modal > .close-modal-btn:hover {
-   color: var(--light-gray);
+.spell-modal>.close-modal-btn:hover {
+    color: var(--light-gray);
 }
 
 .listed-spell {
@@ -70,23 +70,46 @@
     transform: scale(0.90);
 }
 
-.listed-spell > h3 {
+.listed-spell>h3 {
     padding: 6px 0 12px 0;
     justify-self: flex-start;
 }
 
-.listed-spell > h4 {
+.listed-spell>h4 {
     font-weight: 400;
     font-size: 1.2rem;
 }
 
 .spell-animation {
-    top: 0;
-    width: 50px;
-    height: 50px;
-    z-index: 10000;
+    z-index: 100;
     position: fixed;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: spell-hit infinite 0.5s;
+    background: linear-gradient(-45deg, red, orange);
+    border-radius: 150px 150px 0px 150px;
+    transform: rotate(-135deg) translate(60%, 0) scale(0.6);
+    animation: .1s flame infinite;
+    filter: blur(10px);
+    box-shadow: 17px 20px 90px #700;
+    border: 45px solid black;
+    border-left-width: 25px;
+    border-top-width: 25px;
+}
+
+.spell-animation:after,
+.spell-animation:before {
+    top: 20px;
+    content: '';
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: absolute;
+    background: linear-gradient(-45deg, red, orange);
+    animation: .2s flame infinite;
+    transform: scale(.8) rotate(20deg);
+    border-radius: 100px 100px 0px 100px;
+}
+
+.spell-animation:before {
+    top: 0;
+    animation-duration: .09s;
+    transform: scale(.9) rotate(-15deg) translate(10px, 0px);
 }

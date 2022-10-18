@@ -78,7 +78,14 @@ function onSetSpell(ev, spellId) {
     _setSelectedSpell(spell)
     _toggleHidden([gElSpellsModal])
     if (spell.name === 'Rest' || spell.name === 'Star Gazing') {
-        onTarget(null)
+        _handleSpell(currWizard._id)
+        _toggleHidden([gElSpellsModal])
+        _setCurrTurn()
+        _renderWizards()
+        _renderBatlleLog()
+        _renderSpells()
+        _renderShop()
+        _setSelectedSpell(null)
     }
 }
 
@@ -86,15 +93,18 @@ function onTarget(ev, targetId) {
     const currWizard = wizardService.getWizards()[gGame.currentTurn]
     if (targetId === currWizard._id && !gGame.selectedSpell) {
         return _toggleHidden([gElSpellsModal])
+    } else if (!gGame.selectedSpell) return
+    switch (gGame.selectedSpell.name) {
+        case 'Rest':
+            console.log(gGame.selectedSpell.name)
     }
-    if (!gGame.selectedSpell) return
     const elBody = document.querySelector('body')
     const elSpellAnimation = document.querySelector('.spell-animation')
     elBody.classList.add('shakey')
     _toggleHidden([elSpellAnimation])
     elSpellAnimation.style.top = '' + ev.clientY + 'px'
     elSpellAnimation.style.left = '' + ev.clientX + 'px'
-    setTimeout(() => _toggleHidden([elSpellAnimation]), 500)
+    setTimeout(() => _toggleHidden([elSpellAnimation]), 350)
     setTimeout(() => elBody.classList.remove('shakey'), 500)
     _handleSpell(targetId)
     _toggleHidden([gElSpellsModal])
@@ -112,11 +122,10 @@ function onPurchaseSpell(spellId) {
     const spell = spellService.getSpellById(spellId)
     const wizard = wizardService.getWizards()[gGame.currentTurn]
     if (wizard.spells.includes(spell)) {
-        _renderMessageModal('Already purchsed')
-        return
+        return _renderMessageModal('Already purchsed')
+        
     } else if (spell.goldCost > wizard.gold) {
-        _renderMessageModal('Not enough gold')
-        return
+        return _renderMessageModal('Not enough gold')
     }
     wizardService.addSpell(spell, gGame.currentTurn)
     _renderShop()
@@ -178,9 +187,9 @@ function _renderShop() {
     let strHTMLs = spells.map(spell => {
         return `<div class="flex spell-item-container ${(currWizard.spells.includes(spell)) ? 'purchsed' : ''}"
         onclick="onPurchaseSpell('${spell._id}')">
-        <div class="flex spell-cost-container">${spell.goldCost}&nbsp<i class="fa-solid fa-hand-holding-dollar"></i></div>
-        <div class="flex spell-name-container">${spell.name}</div>
-        <div class="flex spell-desc-container">${spell.description}</div>
+        <div class="flex spell-cost-container" title="Costs ${spell.goldCost} gold">${spell.goldCost}&nbsp<i class="fa-solid fa-hand-holding-dollar"></i></div>
+        <div class="flex spell-name-container" title="${spell.name}">${spell.name}</div>
+        <div class="flex spell-desc-container" title="${spell.description}">${spell.description}</div>
         </div>`
     })
     elShopList.innerHTML = strHTMLs.join('')

@@ -94,6 +94,16 @@ const spells = [
         goldCost: 5,
         description: 'Shot a magic arrow, deal 25 HP and 10 MP to the enemy for 25 MP'
     },
+    {
+        _id: 's110',
+        name: 'Poison gas',
+        hpDiff: -10,
+        mpDiff: 0,
+        hpCost: 0,
+        mpCost: -35,
+        goldCost: 6,
+        description: 'Relese a poisones gas, deal -10 HP to everyone'
+    },
 ]
 
 function getSpells() {
